@@ -80,8 +80,6 @@ function updateBookmarkIconsCache() {
   // Remove the icons in storage first
   chrome.storage.local.remove("bookmark_icons");
 
-  alert("update clicked");
-
   // Retrieve bookmarks
   chrome.bookmarks.getChildren(BookmarkFolderId, (bookmarks) => {
     var icons = [];

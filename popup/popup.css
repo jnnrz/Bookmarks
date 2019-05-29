@@ -2,21 +2,42 @@ body {
   font-family: "Roboto", "Arial", "sans-serif";
 }
 
-* {
-  border: 1px solid #ccc;
-}
-
 #app {
   width: 400px;
-  height: 500px;
-  border: 1px solid blue;
 }
 
-#bookmark-list {
-  
-  margin: 0;
-  padding: 5px;
-  width: 395px;
-  
+#app > h2 {
+  margin: 10px 10px 0px 10px;
+}
 
+#app a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#app a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+#app a:link, a:visited {
+  color: #007bff;
+}
+
+#bookmark-list {  
+  margin: 0;
+  padding: 10px;
+  width: inherit;
+}
+
+#bookmark-list a {
+  width: 325px;
+}
+
+.truncate {
+  display: block;
+  width: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

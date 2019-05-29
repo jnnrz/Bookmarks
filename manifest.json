@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Bookmarks",
   "description": "Save bookmarks for later",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "browser_action": {
     "default_popup": "popup/popup.html"
   },
@@ -15,6 +15,7 @@
     "contextMenus",
     "activeTab",
     "tabs",
-    "storage"
+    "storage",
+    "chrome://favicon/"
   ]
 }

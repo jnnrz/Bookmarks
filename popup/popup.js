@@ -1,8 +1,5 @@
 /*global chrome*/
 const bookmarkList = document.getElementById("bookmark-list");
-const bookmarkListTable = document.getElementById("bl-table");
-
-let bookmarkscript;
 
 class Popup {
   constructor() {

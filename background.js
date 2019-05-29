@@ -2,9 +2,12 @@ const BookmarksFolderName = "Bookmark for Later";
 
 chrome.runtime.onInstalled.addListener((details) => {
 
+  // Clean storage
+  chrome.storage.local.clear();
+
   // Look for designed folder
   chrome.bookmarks.search(BookmarksFolderName, (res) => {
-    if (!(res.lenght > 0)) {
+    if (res === undefined || res.length == 0) {
       // If main folder doesn't exist, create it and then save its Id in storage
       chrome.bookmarks.create({ parentId: "2", title: BookmarksFolderName }, (bf) => {
         // Now that it has been created, save it
@@ -43,9 +46,9 @@ chrome.contextMenus.onClicked.addListener((info) => {
           title: tab.title,
           url: tab.url
         }, (res) => {
-            if (chrome.runtime.lastError) {
-              console.error("ContextMenuAddBk: " + chrome.runtime.lastError.message);
-            }
+          if (chrome.runtime.lastError) {
+            console.error("ContextMenuAddBk: " + chrome.runtime.lastError.message);
+          }
         });
       });
     });

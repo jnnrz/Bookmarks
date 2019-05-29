@@ -38,7 +38,7 @@ chrome.contextMenus.create({ id: "bfcm", title: "Bookmark this site" }, () => {
 
 // ContextMenu onClick listener
 chrome.contextMenus.onClicked.addListener((info) => {
-  if (info.menuItemId === "bcfm") {
+  if (info.menuItemId === "bfcm") {
     chrome.tabs.getSelected((tab) => {
       chrome.storage.local.get("bookmark_folder", (data) => {
         chrome.bookmarks.create({

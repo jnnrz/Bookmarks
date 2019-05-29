@@ -1,4 +1,5 @@
 const BookmarksFolderName = "Bookmark for Later";
+var BookmarkFolderId;
 
 chrome.runtime.onInstalled.addListener((details) => {
 
@@ -15,18 +16,15 @@ chrome.runtime.onInstalled.addListener((details) => {
           if (chrome.runtime.lastError) {
             console.error("SetBookmarkFolder " + chrome.runtime.lastError.message);
           }
+          BookmarkFolderId = bf.id;
         });
       });
     } else {
+      BookmarkFolderId = res[0].id;
       chrome.storage.local.set({ "bookmark_folder": res[0].id });
+      updateBookmarkIconsCache();
     }
   });
-
-  /*
-    Later
-
-  */
-
 });
 
 // Create context menu
@@ -54,3 +52,53 @@ chrome.contextMenus.onClicked.addListener((info) => {
     });
   }
 });
+
+chrome.bookmarks.onCreated.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onChanged.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onRemoved.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onMoved.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onChildrenReordered.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onImportEnded.addListener(updateBookmarkIconsCache);
+
+// Transform url image to base64 string
+function toDataUrl(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      callback(reader.result);
+    }
+    reader.readAsDataURL(xhr.response);
+  };
+  xhr.open('GET', url);
+  xhr.responseType = 'blob';
+  xhr.send();
+}
+
+// Updates the icon cache
+function updateBookmarkIconsCache() {
+  // Remove the icons in storage first
+  chrome.storage.local.remove("bookmark_icons");
+
+  alert("update clicked");
+
+  // Retrieve bookmarks
+  chrome.bookmarks.getChildren(BookmarkFolderId, (bookmarks) => {
+    var icons = [];
+    let bookmarkCount = bookmarks.length;
+    for (let i = 1; i <= bookmarkCount; i++) {
+      let bNumber = bookmarkCount - i;
+      // Get base64 from icon's chrome://favicon url
+      toDataUrl("chrome://favicon/" + bookmarks[bNumber].url, (i64) => {
+        icons[bNumber] = i64;
+
+        // Build the array with the icons in localstorage
+        chrome.storage.local.set({ "bookmark_icons": [...icons] }, () => {
+          if (chrome.runtime.lastError) {
+            console.error("IconsCache: " + chrome.runtime.lastError.message);
+          }
+        });
+      });
+    }
+  });
+}

@@ -13,30 +13,33 @@ class Popup {
   loadBookmarks() {
     // Get bookmark's folder
     chrome.storage.local.get("bookmark_folder", (items) => {
-      // Retrieve the bookmarks
-      chrome.bookmarks.getChildren(items.bookmark_folder, (bookmarks) => {
-        let bookmarkCount = bookmarks.length;
-        for (let i = 1; i <= bookmarkCount; i++) {
-          let bNumber = bookmarkCount - i;
-          // Adds bookmark to the table
-          this.addBookmark(bookmarks[bNumber]);
-    
-          // Adds event listener to 'delete' button
-          let link = document.getElementById("d" + bookmarks[bNumber].id);
-          link.addEventListener('click', () => {
-            this.removeBookmark(bookmarks[bNumber].id);
-          });
-        }
+      chrome.storage.local.get("bookmark_icons", (icons) => {
+        // Retrieve the bookmarks
+        chrome.bookmarks.getChildren(items.bookmark_folder, (bookmarks) => {
+          let bookmarkCount = bookmarks.length;
+          for (let i = 1; i <= bookmarkCount; i++) {
+            let bNumber = bookmarkCount - i;
+            // Adds bookmark to the table
+            this.addBookmark(bookmarks[bNumber], icons.bookmark_icons[bNumber]);
+
+            // Adds event listener to 'delete' button
+            let link = document.getElementById("d" + bookmarks[bNumber].id);
+            link.addEventListener('click', () => {
+              this.removeBookmark(bookmarks[bNumber].id);
+            });
+          }
+        });
       });
+
     });
   }
 
-  addBookmark(bookmark) {
+  addBookmark(bookmark, icon) {
     // Create row
     let row = document.createElement("tr");
     row.id = 'b' + bookmark.id;
     let rowContent = "<td>" +
-      "<img src='chrome://favicon/" + bookmark.url + "'/></td>" +
+      "<img src='" + icon + "'/></td>" +
       "<td><a class='truncate' href='" + bookmark.url + "'>" + bookmark.title + "</a></td>" +
       "<td><a href='#' id='d" + bookmark.id + "'>❌</a></td>";
     row.innerHTML = rowContent;

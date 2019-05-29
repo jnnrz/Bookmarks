@@ -2,12 +2,24 @@
   "manifest_version": 2,
   "name": "Bookmarks",
   "description": "Save bookmarks for later",
-  "version": "0.3.0",
+  "version": "0.4.0",
+  "icons": {
+    "48": "images/bookmark48.png",
+    "64": "images/bookmark64.png",
+    "128": "images/bookmark128.png"
+  },
   "browser_action": {
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/bookmark16.png",
+      "24": "images/bookmark24.png",
+      "32": "images/bookmark32.png"
+    }
   },
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "background.js"
+    ],
     "persistent": true
   },
   "permissions": [

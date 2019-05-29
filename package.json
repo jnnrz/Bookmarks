@@ -1,0 +1,11 @@
+{
+  "name": "bookmarks",
+  "version": "0.1.0",
+  "description": "Save websites in the bookmarks",
+  "main": "index.js",
+  "author": "Johann Perozo",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.86"
+  }
+}

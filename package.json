@@ -6,6 +6,11 @@
   "author": "Johann Perozo",
   "license": "MIT",
   "devDependencies": {
-    "@types/chrome": "^0.0.86"
+    "@types/chrome": "^0.0.86",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "web-ext-types": "^3.1.0"
   }
 }

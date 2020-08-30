@@ -10,7 +10,7 @@
     "prettier"
   ],
   "parserOptions": {
-    "ecmaVersion": 11
+    "ecmaVersion": 2020
   },
   "rules": {
     "prettier/prettier": [

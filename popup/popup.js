@@ -22,6 +22,18 @@ class Popup {
             // Adds bookmark to the table
             this.addBookmark(bookmarks[bNumber], icons.bookmark_icons[bNumber]);
 
+            let urlLink = document.getElementById('l' + bookmarks[bNumber].id);
+            urlLink.addEventListener('click', (e) => {
+              e.preventDefault();
+
+              chrome.tabs.create({
+                url: bookmarks[bNumber].url,
+                active: false,
+              });
+
+              console.log(bookmarks[bNumber].url);
+            });
+
             // Adds event listener to 'delete' button
             let link = document.getElementById('d' + bookmarks[bNumber].id);
             link.addEventListener('click', (e) => {
@@ -43,7 +55,10 @@ class Popup {
       "<img src='" +
       icon +
       "'/></td>" +
-      "<td><a class='truncate' href='" +
+      "<td><a id='" +
+      'l' +
+      bookmark.id +
+      "' class='truncate' href='" +
       bookmark.url +
       "'>" +
       bookmark.title +

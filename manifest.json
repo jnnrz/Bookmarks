@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Bookmarks",
   "description": "Save bookmarks for later",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "icons": {
     "48": "images/bookmark48.png",
     "64": "images/bookmark64.png",

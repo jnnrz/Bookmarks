@@ -24,7 +24,8 @@ class Popup {
 
             // Adds event listener to 'delete' button
             let link = document.getElementById('d' + bookmarks[bNumber].id);
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
               this.removeBookmark(bookmarks[bNumber].id);
             });
           }

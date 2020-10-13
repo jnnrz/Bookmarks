@@ -6,28 +6,29 @@ body {
   width: 400px;
 }
 
-#app > h2 {
+#app>h2 {
   margin: 10px 10px 0px 10px;
 }
 
 #app a {
   text-decoration: none;
-  font-size: 14px;
+  font-size      : 14px;
 }
 
 #app a:hover {
-  color: #0056b3;
+  color          : #0056b3;
   text-decoration: underline;
 }
 
-#app a:link, a:visited {
+#app a:link,
+a:visited {
   color: #007bff;
 }
 
-#bookmarkList {  
-  margin: 0;
+#bookmarkList {
+  margin : 0;
   padding: 10px;
-  width: inherit;
+  width  : inherit;
 }
 
 #bookmarkList a {
@@ -35,9 +36,9 @@ body {
 }
 
 .truncate {
-  display: block;
-  width: inherit;
-  overflow: hidden;
-  white-space: nowrap;
+  display      : block;
+  width        : inherit;
+  overflow     : hidden;
+  white-space  : nowrap;
   text-overflow: ellipsis;
 }

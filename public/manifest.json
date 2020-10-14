@@ -9,7 +9,7 @@
     "128": "images/bookmark128.png"
   },
   "browser_action": {
-    "default_popup": "popup/popup.html",
+    "default_popup": "popup.html",
     "default_icon": {
       "16": "images/bookmark16.png",
       "24": "images/bookmark24.png",

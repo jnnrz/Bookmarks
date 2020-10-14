@@ -42,3 +42,24 @@ a:visited {
   white-space  : nowrap;
   text-overflow: ellipsis;
 }
+
+.search-container {
+  display: flex;
+  padding: 8px;
+}
+
+.search-container input[type=text] {
+  width: 100%;
+}
+
+input[type=text] {
+  padding      : 8px;
+  border       : 1px solid #ccc;
+  border-radius: 3px;
+  font-size    : 15px;
+  outline      : none;
+}
+
+input[type=text]:active {
+  border: 1px solid gray;
+}

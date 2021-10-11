@@ -64,13 +64,6 @@ chrome.contextMenus.onClicked.addListener((info) => {
   }
 });
 
-chrome.bookmarks.onCreated.addListener(updateBookmarkIconsCache);
-chrome.bookmarks.onChanged.addListener(updateBookmarkIconsCache);
-chrome.bookmarks.onRemoved.addListener(updateBookmarkIconsCache);
-chrome.bookmarks.onMoved.addListener(updateBookmarkIconsCache);
-chrome.bookmarks.onChildrenReordered.addListener(updateBookmarkIconsCache);
-chrome.bookmarks.onImportEnded.addListener(updateBookmarkIconsCache);
-
 // Transform url image to base64 string
 function toDataUrl(url, callback) {
   const xhr = new XMLHttpRequest();
@@ -114,3 +107,10 @@ function updateBookmarkIconsCache() {
     }
   );
 }
+
+chrome.bookmarks.onCreated.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onChanged.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onRemoved.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onMoved.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onChildrenReordered.addListener(updateBookmarkIconsCache);
+chrome.bookmarks.onImportEnded.addListener(updateBookmarkIconsCache);

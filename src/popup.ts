@@ -58,7 +58,7 @@ class Popup {
   };
 
   addBookmarks = (bookmarks: Bookmark[]) => {
-    bookmarks.map((b: Bookmark, index: number) => {
+    bookmarks.map((b: Bookmark) => {
       // Adds bookmark to the list
       this.addBookmarkToHTML(b);
 
@@ -83,7 +83,6 @@ class Popup {
 
         // Removes bookmark from list
         this.removeBookmark(b.info.id);
-        this.removeBookmark(this.bookmarks[index].info.id);
       });
     });
   };

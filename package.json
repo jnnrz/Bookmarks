@@ -1,7 +1,7 @@
 {
   "name": "bookmarks",
-  "version": "0.1.0",
-  "description": "Save websites in the bookmarks",
+  "version": "1.2.1",
+  "description": "Save bookmarks for later",
   "main": "index.js",
   "author": "Johann Perozo",
   "license": "MIT",
